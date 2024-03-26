@@ -13,3 +13,6 @@ jobs:
         uses: actions/checkout@v4
         with:
               ref: ${{ github.event.client_payload.sha }}
+
+      - name: my-step
+        run: echo "Hello World!"
