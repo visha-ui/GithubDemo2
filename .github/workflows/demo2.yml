@@ -1,8 +1,15 @@
-name: hello-Server
-on: push
+name: My Target Workflow
+
+on:
+  repository_dispatch:
+    types: [trigger-workflow]
+    
 jobs:
-  your-job:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: my-step
-        run: echo "Hello Server!"
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+              ref: ${{ github.event.client_payload.sha }}
